@@ -1,0 +1,12 @@
+.overlay {
+
+}
+.hide{
+    display: none;
+}
+.logged {
+    display: block;
+    background-color: red;
+    width: 500px;
+    height: 500px;
+}

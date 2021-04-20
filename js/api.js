@@ -9,7 +9,7 @@ export class API {
     fetchRequest(url, request) {
         return fetch(url, request)
             .then(response => response.json())
-            .then(data => { console.log(data); return data })
+            .then(data => { return data })
             .catch(err => {
                 console.error(err);
             });
@@ -89,7 +89,7 @@ export class API {
     * @param {number} price price of donut
     * @return {JSON} 200 for success
     */
-         createStore(name) {
+    createStore(name) {
             let url = 'https://donutshop-api.herokuapp.com/create-donut-shop';
             let request = {
                 "method": 'POST',

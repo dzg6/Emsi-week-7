@@ -1,11 +1,18 @@
 import { API } from './api.js'
 
-export class pos extends API {
+
+/*
+*   POS 
+*
+*   Pos is an asynchournous wrapper that wraps around all the API requests functions
+*/
+export class POS extends API {
     constructor(id) {
         super(id);
     }
 
 
+    //UpdateStore is a reoccuring callback that is found on site-hooks.js
     async createDonut(type, price, count, updateStore) {
         let data = await super.createDonut(type, price);
         if(data.success){
@@ -14,6 +21,10 @@ export class pos extends API {
         }else{
             updateStore(data)
         }
+    }
+    async createStore(name, updateStore) {
+        let data = await super.createStore(name);
+        updateStore(data);
     }
 
     async editDonut(type, price, updateStore) {
@@ -37,6 +48,7 @@ export class pos extends API {
     
     }
 
+    //------- Update Store Functions ----/
 
     async getDonuts(printCallback) {
         const data = await super.getInventory();
@@ -45,6 +57,7 @@ export class pos extends API {
 
     async  getRevenue(printCallback) {
         const data = await super.getRevenue();
+        //getSalesTax is a local api that runs on nodeJs. You must be locally running node "server.js" for this to work
         const tax = await super.getSalesTax(data.revenue);
         let total = Number(data.revenue) + Number(tax.salesTax);
 

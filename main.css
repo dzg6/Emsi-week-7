@@ -5,8 +5,22 @@
     display: none;
 }
 .logged {
-    display: block;
-    background-color: red;
-    width: 500px;
-    height: 500px;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-around;
+    width: 80%;
+}
+div #store {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-between;
+}
+#availableInventory td {
+    border: 1px solid grey;
+    background-color: bisque;
+}
+h1{
+    text-align: center;
 }
